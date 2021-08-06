@@ -30,11 +30,19 @@
             <mat-error *ngIf="regForm.controls.passwordRepeat.hasError('password') && !regForm.controls.passwordRepeat.hasError('required')">
               Please enter a valid password
             </mat-error>
+            <mat-error *ngIf="regForm.hasError('passwordRepeat')">
+              Пароли не совпадают
+            </mat-error>
             <mat-error *ngIf="regForm.controls.passwordRepeat.hasError('required')">
               Password is <strong>required</strong>
             </mat-error>
           </mat-form-field>
-          <button class="reg__button" mat-raised-button color="primary" [disabled]="regForm.invalid">Зарегистрироваться</button>
+          <button
+            class="reg__button"
+            mat-raised-button
+            color="primary"
+            [disabled]="regForm.invalid || regForm.disabled"
+          >Зарегистрироваться</button>
         </form>
       </mat-card-content>
     </mat-card>
